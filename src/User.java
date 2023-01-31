@@ -5,8 +5,12 @@ public class User {
     String username, fullName, password;
     int balance;
     ArrayList<PurchaseDetail> purchaseList = new ArrayList<PurchaseDetail>();
-    void display()
-    {
+
+    void display() {
+
+    }
+
+    void msg(){
 
     }
 }
@@ -15,4 +19,5 @@ public class User {
 class PurchaseDetail {
     String pid;
     int qty;
+
 }
