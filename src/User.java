@@ -6,13 +6,6 @@ public class User {
     int balance;
     ArrayList<PurchaseDetail> purchaseList = new ArrayList<PurchaseDetail>();
 
-    void display() {
-
-    }
-
-    void msg(){
-
-    }
 }
 
 

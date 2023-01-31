@@ -24,7 +24,6 @@ public class Product {
 
 class Catalog {
     ArrayList<Product> productList = new ArrayList<Product>();
-
     // make display fun of catalog and access using its object
 
 
