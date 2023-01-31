@@ -1,10 +1,21 @@
+import java.util.Scanner;
+
 public class Transaction {
-    int amount;
-    public void purchase(Product p){  // product obj  // user obj
-
-
-    }
-    public void  msg(){
-        System.out.println("transcation method");
+    int totalAmount, pID, purchasedQty, updatedBal;
+    Transaction purchase(Product p, User u) {
+        Scanner sc = new Scanner(System.in);
+        Transaction t = new Transaction();
+        System.out.println("Enter required quantity : ");
+        t.purchasedQty = sc.nextInt();
+        totalAmount = t.purchasedQty * p.price;
+        if (u.balance < totalAmount) {
+            System.out.println("Insufficient balance");
+            return null;
+        }
+        else{
+            System.out.println("Successful transaction");
+            return t;
+        }
     }
 }
+
