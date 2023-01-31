@@ -10,6 +10,5 @@ public class Main {
         p1.productID = 1;
         p1.qty = 10;
         p1.price = 100;
-
     }
 }
