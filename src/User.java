@@ -51,7 +51,6 @@ class AllUsers{
 }
 
 
-
 class PurchaseDetail {
     String pid;
     int qty;
