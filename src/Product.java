@@ -26,7 +26,12 @@ class Catalog {
     ArrayList<Product> productList = new ArrayList<Product>();
     // make display fun of catalog and access using its object
 
-
+    public Catalog(){
+        productList.add(new Product(1,"Book",200,4));
+        productList.add(new Product(2,"Bag",400,1));
+        productList.add(new Product(3,"Pen",25,10));
+        productList.add(new Product(4,"Bottle",25,2));
+    }
     void getCatalog()
     {
         for(int i=0;i<productList.size();i++)
