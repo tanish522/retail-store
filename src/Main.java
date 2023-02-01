@@ -26,7 +26,7 @@ public class Main {
                 }
                 case 2: {
                     User userObj = new User();
-                    userObj.register();
+                   // userObj.register();
                 }
 
                 case 3: {
