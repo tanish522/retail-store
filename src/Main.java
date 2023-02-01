@@ -11,21 +11,7 @@ public class Main {
         User u = new User();
         Catalog c = new Catalog();
 
-//        p.productID = 1;
-//        p.qty = 10;
-//        p.price = 100;
-//        t.purchase(p,u);
-        // display catalog
 
-
-//        p.productID = 1;
-//        p.qty = 10;
-//        p.price = 100;
-//        part2:
-//        {
-//            System.out.println("transaction label where balance is insufficient");
-//        }
-        //t.purchase(book,u);
         // set catalog
 //        c.setProductList(book);
 //        c.setProductList(bag);
