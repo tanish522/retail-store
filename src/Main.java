@@ -10,10 +10,6 @@ public class Main {
         p.productID = 1;
         p.qty = 10;
         p.price = 100;
-//        part2:
-//        {
-//            System.out.println("transaction label where balance is insufficient");
-//        }
         t.purchase(p,u);
         // display catalog
     }

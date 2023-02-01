@@ -8,7 +8,6 @@ public class User {
 
 }
 
-
 class PurchaseDetail {
     String pid;
     int qty;
