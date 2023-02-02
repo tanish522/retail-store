@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Formatter;
 public class Product {
     int productID, price, qty;
     String productName;
@@ -32,19 +33,27 @@ class Catalog {
         productList.add(new Product(3,"Pen",25,10));
         productList.add(new Product(4,"Bottle",25,2));
     }
-    void getCatalog()
+    public void getCatalog()
     {
+        Formatter fmt = new Formatter();
+        fmt.format("%s %15s %15s %15s\n", "Id", "Name", "Price", "Quantity");
+        fmt.format("--------------------------------------------------------------\n");
         for(int i=0;i<productList.size();i++)
         {
-            System.out.print(productList.get(i).productID + "\t");
-            System.out.print(productList.get(i).productName + "\t");
-            System.out.print(productList.get(i).price + "\t");
-            System.out.print(productList.get(i).qty + "\n");
+            fmt.format("%s %15s", productList.get(i).productID,productList.get(i).productName );
+            fmt.format("%15s %15s \n",productList.get(i).price, productList.get(i).qty);
+//            System.out.print(productList.get(i).productID + "\t");
+//            System.out.print(productList.get(i).productName + "\t");
+//            System.out.print(productList.get(i).price + "\t");
+//            System.out.print(productList.get(i).qty + "\n");
         }
+        System.out.println(fmt);
 
     }
 
-    public void setProductList(Product product) {
+
+    public void setProductList(Product product)
+    {
         productList.add(product);
     }
 }
