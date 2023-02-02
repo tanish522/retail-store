@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.Scanner;
 public class Main {
 
@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         UserData user=new UserData();
         Catalog c = new Catalog();
-        int ch = 0;
+        int ch;
 
         NewSession:
         do {
@@ -38,13 +38,19 @@ public class Main {
                                     System.out.println("Id: " + currUser.uId);
                                     System.out.println("Name: " + currUser.name);
                                     System.out.println("Balance: " + currUser.balance);
+                                    Formatter fmt =new Formatter();
+                                    fmt.format("%s %15s %15s %15s","Name","Product Id","Quantity","Price\n");
+                                    fmt.format("--------------------------------------------------------------\n");
                                     for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
-                                        System.out.println("Name: "+currUser.purchaseList.get(i).productName);
-                                        System.out.print(" Product Id: "+currUser.purchaseList.get(i).productID);
-                                        System.out.print(" Quantity: "+currUser.purchaseList.get(i).qty);
-                                        System.out.print(" Price: "+currUser.purchaseList.get(i).price);
-                                        System.out.println();
+
+                                        fmt.format("%s",currUser.purchaseList.get(i).productName);
+                                        fmt.format("%15s",currUser.purchaseList.get(i).productID);
+                                        fmt.format("%15s",currUser.purchaseList.get(i).qty);
+                                        fmt.format("%15s\n",currUser.purchaseList.get(i).price);
                                     }
+                                    fmt.format("--------------------------------------------------------------\n");
+                                    System.out.println(fmt);
+
                                     break;
                                 }
                                 case 2:

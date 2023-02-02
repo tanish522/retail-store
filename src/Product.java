@@ -42,10 +42,6 @@ class Catalog {
         {
             fmt.format("%s %15s", productList.get(i).productID,productList.get(i).productName );
             fmt.format("%15s %15s \n",productList.get(i).price, productList.get(i).qty);
-//            System.out.print(productList.get(i).productID + "\t");
-//            System.out.print(productList.get(i).productName + "\t");
-//            System.out.print(productList.get(i).price + "\t");
-//            System.out.print(productList.get(i).qty + "\n");
         }
         System.out.println(fmt);
 
