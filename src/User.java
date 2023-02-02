@@ -21,18 +21,27 @@ public class User {
 
     }
 
-    public void register(){
-        //users.contains(this.uId);
+    public void register(ArrayList<User> uList){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter UID: ");
-        this.uId = sc.nextInt();
-        System.out.println("Enter Name: ");
-        this.name = sc.next();
+        RegisterAgain:
+        while (true)
+        {
+            System.out.println("Enter UID: ");
+            this.uId = sc.nextInt();
+            System.out.println("Enter Name: ");
+            this.name = sc.next();
+            for (int i = 0; i < uList.size(); i++) {
+                if (this.uId == uList.get(i).uId || this.name.equals(uList.get(i).name)) {
+                    System.out.println("User already exists. Enter another user ID and user name ");
+                    continue RegisterAgain;
+                }
+            }
+            break;
+        }
         System.out.println("Enter Password: ");
         this.password = sc.next();
         System.out.println("Enter Balance: ");
         this.balance = sc.nextInt();
-        return;
     }
 
 

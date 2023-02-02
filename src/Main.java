@@ -9,6 +9,7 @@ public class Main {
         Catalog c = new Catalog();
         int ch = 0;
 
+        NewSession:
         do {
 
             System.out.println("1. Login \n2. Register \n3. Change Password\n4. Exit");
@@ -51,7 +52,7 @@ public class Main {
 
                             case 3:
                             {
-                                break;
+                                continue NewSession;
                             }
 
                             default:
@@ -69,7 +70,7 @@ public class Main {
                 }
                 case 2: {
                      User userObj = new User();
-                     userObj.register();
+                     userObj.register(user.userList);
                     user.userList.add(userObj);
                      break;
                 }
