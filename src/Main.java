@@ -1,10 +1,5 @@
-import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.ArrayList;
-
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.Formatter;
 public class Main {
 
     static ArrayList<User> userList = new ArrayList<>();
@@ -47,9 +42,15 @@ public class Main {
                                 }
                                 break;
                             }
-
                             case 2:
                             {
+                                System.out.println("Enter Product ID to purchase: ");
+                                int productId = sc.nextInt();
+                                Product purchasedProduct = c.getProduct(productId);
+                                System.out.println(purchasedProduct.productName);
+                                Transaction t = new Transaction();
+                                t.purchase(purchasedProduct, userObj, c.productList);
+                                purchasedProduct.updateQuantity(t);
                                 break;
                             }
 

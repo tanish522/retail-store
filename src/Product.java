@@ -21,6 +21,10 @@ public class Product {
         System.out.println("Product Quantity: "+ qty);
     }
 
+    public void updateQuantity(Transaction t){
+
+    }
+
 }
 
 class Catalog {
@@ -28,10 +32,10 @@ class Catalog {
     // make display fun of catalog and access using its object
 
     public Catalog(){
-        productList.add(new Product(1,"Book",200,4));
-        productList.add(new Product(2,"Bag",400,1));
+        productList.add(new Product(1,"Book",200,40));
+        productList.add(new Product(2,"Bag",400,10));
         productList.add(new Product(3,"Pen",25,10));
-        productList.add(new Product(4,"Bottle",25,2));
+        productList.add(new Product(4,"Bottle",25,20));
     }
     public void getCatalog()
     {
@@ -55,6 +59,15 @@ class Catalog {
     public void setProductList(Product product)
     {
         productList.add(product);
+    }
+
+    public Product getProduct(int id){
+        for (int i = 0; i<productList.size(); i++){
+            if(productList.get(i).productID == id){
+                return productList.get(i);
+            }
+        }
+        return null;
     }
 }
 
