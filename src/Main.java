@@ -11,7 +11,6 @@ public class Main {
 
         NewSession:
         do {
-
             System.out.println("1. Login \n2. Register \n3. Change Password\n4. Exit");
             ch = sc.nextInt();
             switch (ch) {

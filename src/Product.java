@@ -4,14 +4,12 @@ import java.util.Formatter;
 public class Product {
     int productID, price, qty;
     String productName;
-
     Product(int productID,String productName, int price, int qty)
     {
         this.productID=productID;
         this.price=price;
         this.qty=qty;
         this.productName=productName;
-
     }
     void display()
     {
@@ -52,13 +50,10 @@ class Catalog {
         System.out.println(fmt);
 
     }
-
-
     public void setProductList(Product product)
     {
         productList.add(product);
     }
-
     public Product getProduct(int id){
         for (int i = 0; i<productList.size(); i++){
             if(productList.get(i).productID == id){
