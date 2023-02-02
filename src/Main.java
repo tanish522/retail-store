@@ -23,43 +23,48 @@ public class Main {
                     if (currUser.loginUser(user.userList, userName, password))
                     {
                         currUser = user.getUser(userName);
-                        c.getCatalog();
-                        System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
-                        System.out.println("Enter your choice:");
-                        int choice=sc.nextInt();
-                        switch(choice)
+                        int choice;
+                        do
                         {
-                            case 1:
+                            c.getCatalog();
+                            System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
+                            System.out.println("Enter your choice:");
+                            choice=sc.nextInt();
+                            switch(choice)
                             {
-                                System.out.println("Show Profile\n");//
-                                System.out.println("Id: " + currUser.uId);
-                                System.out.println("Name: " + currUser.name);
-                                System.out.println("Balance: " + currUser.balance);
-                                break;
-                            }
-                            case 2:
-                            {
-                                System.out.println("Enter Product ID to purchase: ");
-                                int productId = sc.nextInt();
-                                Product purchasedProduct = c.getProduct(productId);
-                                System.out.println(purchasedProduct.productName);
-                                Transaction t = new Transaction();
-                                t.purchase(purchasedProduct, currUser, c.productList);
-                                //purchasedProduct.updateQuantity(t);
-                                break;
-                            }
+                                case 1:
+                                {
+                                    System.out.println("User Profile\n");//
+                                    System.out.println("Id: " + currUser.uId);
+                                    System.out.println("Name: " + currUser.name);
+                                    System.out.println("Balance: " + currUser.balance);
+                                    break;
+                                }
+                                case 2:
+                                {
+                                    System.out.println("Enter Product ID to purchase: ");
+                                    int productId = sc.nextInt();
+                                    Product purchasedProduct = c.getProduct(productId);
+                                    System.out.println("Selected Product: " + purchasedProduct.productName);
+                                    Transaction t = new Transaction();
+                                    t.purchase(purchasedProduct, currUser, c.productList, sc);
+                                    break;
+                                }
 
-                            case 3:
-                            {
-                                break;
-                            }
+                                case 3:
+                                {
 
-                            default:
-                            {
-                                System.out.println("Invalid choice...Enter proper choice\n");
-                                break;
+                                    break;
+                                }
+
+                                default:
+                                {
+                                    System.out.println("Invalid choice...Enter valid choice!!\n");
+                                    break;
+                                }
                             }
-                        }
+                        }while(choice!=3);
+
                     }
                     else
                     {
@@ -68,17 +73,17 @@ public class Main {
                     break;
                 }
                 case 2: {
-                     User userObj = new User();
-                     userObj.register();
-                    user.userList.add(userObj);
+                     User currUser = new User();
+                     currUser.register();
+                        user.userList.add(currUser);
                      break;
                 }
 
                 case 3: {
                         System.out.println("Enter Username to change Password ");
                         String userName = sc.next();
-                        User userObj = new User();
-                        userObj.changePassword(user.userList, userName);
+                        User currUser = user.getUser(userName);
+                        currUser.changePassword(sc);
                         break;
                 }
                 case 4: {
@@ -86,7 +91,7 @@ public class Main {
                         break;
                 }
                 default: {
-                        System.out.println("Invalid Choice");
+                        System.out.println("Invalid Choice...Enter valid choice!!");
                         break;
                 }
             }
