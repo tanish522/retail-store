@@ -1,10 +1,5 @@
-import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.ArrayList;
-
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.Formatter;
 public class Main {
 
     static ArrayList<User> userList = new ArrayList<>();
