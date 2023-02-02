@@ -16,6 +16,11 @@ public class User {
         this.password=password;
         this.balance=bal;
     }
+    public User()
+    {
+
+    }
+
     public void register(){
         //users.contains(this.uId);
         Scanner sc = new Scanner(System.in);
@@ -62,13 +67,24 @@ public class User {
 }
 class UserData
 {
-    ArrayList<User> users = new ArrayList<>();
+    ArrayList<User> userList = new ArrayList<>();
 
     public UserData()
     {
-        users.add(new User(1,"neel","neel",25000));
-        users.add(new User(2,"pratish","pratish",20000));
-        users.add(new User(3,"jinal","jinal",3000));
-        users.add(new User(4,"tanish","tanish",200));
+        userList.add(new User(1,"neel","neel",25000));
+        userList.add(new User(2,"pratish","pratish",20000));
+        userList.add(new User(3,"jinal","jinal",3000));
+        userList.add(new User(4,"tanish","tanish",200));
+    }
+    public User getUser(String name)
+    {
+        for(int i=0;i<userList.size();i++)
+        {
+            if(userList.get(i).name.equals(name))
+            {
+                return userList.get(i);
+            }
+        }
+        return null;
     }
 }

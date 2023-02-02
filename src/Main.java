@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
 
-    static ArrayList<User> userList = new ArrayList<>();
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -21,10 +19,10 @@ public class Main {
                     String userName = sc.next();
                     System.out.println("Enter Password: ");
                     String password = sc.next();
-                    User userObj = new User();
-                    if (userObj.loginUser(userList, userName, password))
+                    User currUser = new User();
+                    if (currUser.loginUser(user.userList, userName, password))
                     {
-                        System.out.println("Name:"+userObj.name);
+                        currUser = user.getUser(userName);
                         c.getCatalog();
                         System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
                         System.out.println("Enter your choice:");
@@ -33,13 +31,10 @@ public class Main {
                         {
                             case 1:
                             {
-                                System.out.println("Show Profile\n");
-                                for(int i=0;i<userList.size();i++)
-                                {
-                                    System.out.println("Id:" + userList.get(i).uId );
-                                    System.out.println("Name:" + userList.get(i).name );
-                                    System.out.println("Balance:" + userList.get(i).balance );
-                                }
+                                System.out.println("Show Profile\n");//
+                                System.out.println("Id: " + currUser.uId);
+                                System.out.println("Name: " + currUser.name);
+                                System.out.println("Balance: " + currUser.balance);
                                 break;
                             }
                             case 2:
@@ -49,8 +44,8 @@ public class Main {
                                 Product purchasedProduct = c.getProduct(productId);
                                 System.out.println(purchasedProduct.productName);
                                 Transaction t = new Transaction();
-                                t.purchase(purchasedProduct, userObj, c.productList);
-                                purchasedProduct.updateQuantity(t);
+                                t.purchase(purchasedProduct, currUser, c.productList);
+                                //purchasedProduct.updateQuantity(t);
                                 break;
                             }
 
@@ -75,7 +70,7 @@ public class Main {
                 case 2: {
                      User userObj = new User();
                      userObj.register();
-                     userList.add(userObj);
+                    user.userList.add(userObj);
                      break;
                 }
 
@@ -83,7 +78,7 @@ public class Main {
                         System.out.println("Enter Username to change Password ");
                         String userName = sc.next();
                         User userObj = new User();
-                        userObj.changePassword(userList, userName);
+                        userObj.changePassword(user.userList, userName);
                         break;
                 }
                 case 4: {
