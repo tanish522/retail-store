@@ -13,6 +13,7 @@ public class User {
 
 
     public boolean loginUser(String userName, String password){
+        ArrayList<User> users=new ArrayList<>();
         for(int i=0;i<users.size();i++){
             User temp = users.get(i);
 
@@ -25,6 +26,7 @@ public class User {
         return false;
     }
     public boolean changePassword(String userName){
+        ArrayList<register> users=new ArrayList<>();
         for(int i=0;i<users.size();i++){
             register temp = users.get(i);
             if(temp.name.equals(userName)){
