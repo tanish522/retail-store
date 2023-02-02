@@ -37,6 +37,7 @@ public class User {
         return false;
     }
     public int changePassword(ArrayList<User> userList, String userName){
+        System.out.println("size "+userList.size());
         for(int i=0;i<userList.size();i++){
             User temp = userList.get(i);
             if(temp.name.equals(userName)){
