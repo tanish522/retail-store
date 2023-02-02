@@ -39,6 +39,13 @@ public class Main {
                                     System.out.println("Id: " + currUser.uId);
                                     System.out.println("Name: " + currUser.name);
                                     System.out.println("Balance: " + currUser.balance);
+                                    for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
+                                        System.out.println("Name: "+currUser.purchaseList.get(i).productName);
+                                        System.out.print(" Product Id: "+currUser.purchaseList.get(i).productID);
+                                        System.out.print(" Quantity: "+currUser.purchaseList.get(i).qty);
+                                        System.out.print(" Price: "+currUser.purchaseList.get(i).price);
+                                        System.out.println();
+                                    }
                                     break;
                                 }
                                 case 2:
