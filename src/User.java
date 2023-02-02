@@ -7,8 +7,15 @@ public class User {
     String name;
     String password;
     int balance;
-    ArrayList<PurchaseDetail> purchaseList = new ArrayList<PurchaseDetail>();
+    ArrayList<Product> purchaseList = new ArrayList<>();
 
+    User(int id,String name,String password,int bal)
+    {
+        this.uId=id;
+        this.name=name;
+        this.password=password;
+        this.balance=bal;
+    }
     public void register(){
         //users.contains(this.uId);
         Scanner sc = new Scanner(System.in);
@@ -25,6 +32,7 @@ public class User {
 
 
     public boolean loginUser(ArrayList<User> userList, String userName, String password){
+
         for(int i=0;i<userList.size();i++){
             User temp = userList.get(i);
             if(temp.name.equals(userName) && temp.password.equals(password)){
@@ -52,8 +60,15 @@ public class User {
         System.out.println("Username Does not exists ");
     }
 }
-class PurchaseDetail {
-    String pid;
-    int qty;
+class UserData
+{
+    ArrayList<User> users = new ArrayList<>();
 
+    public UserData()
+    {
+        users.add(new User(1,"neel","neel",25000));
+        users.add(new User(2,"pratish","pratish",20000));
+        users.add(new User(3,"jinal","jinal",3000));
+        users.add(new User(4,"tanish","tanish",200));
+    }
 }

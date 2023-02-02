@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Transaction {
-    int totalAmount, pID, purchasedQty, updatedBal;
+    int totalAmount, pID, purchasedQty;
     Transaction purchase(Product p, User u) {
         Scanner sc = new Scanner(System.in);
         Transaction t = new Transaction();
@@ -14,6 +14,7 @@ public class Transaction {
         }
         else{
             System.out.println("Successful transaction");
+            u.balance-=totalAmount;
             return t;
         }
     }
