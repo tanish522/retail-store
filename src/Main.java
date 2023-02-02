@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        Catalog c = new Catalog();
         int ch = 0;
         do {
 
@@ -26,9 +26,12 @@ public class Main {
                     System.out.println("Enter Password: ");
                     String password = sc.next();
                     User userObj = new User();
-                    if (userObj.loginUser(userList, userName, password)) {
-                        //Go to part 2
-                    } else {
+                    if (userObj.loginUser(userList, userName, password))
+                    {
+                        c.getCatalog();
+                    }
+                    else
+                    {
                         continue;
                     }
                     break;
@@ -59,9 +62,6 @@ public class Main {
                 }
             }
         } while (ch != 4);
-
-        Catalog c = new Catalog();
-        c.getCatalog();
 
     }
 }

@@ -47,7 +47,6 @@ public class User {
                 temp.password = sc.next();
                 userList.set(i,temp);
                 System.out.println("Password changed successfully ");
-                sc.close();
                 System.out.println(temp.uId + temp.password +  temp.name + temp.balance);
                 return i;
             }
