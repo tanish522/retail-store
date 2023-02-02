@@ -29,6 +29,31 @@ public class Main {
                     if (userObj.loginUser(userList, userName, password))
                     {
                         c.getCatalog();
+                        System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
+                        System.out.println("Enter your choice:");
+                        int choice=sc.nextInt();
+                        switch(choice)
+                        {
+                            case 1:{
+                                break;
+                            }
+
+                            case 2:
+                            {
+                                break;
+                            }
+
+                            case 3:
+                            {
+                                break;
+                            }
+
+                            default:
+                            {
+                                System.out.println("Invalid choice...Enter proper choice\n");
+                                break;
+                            }
+                        }
                     }
                     else
                     {
