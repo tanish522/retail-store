@@ -13,6 +13,7 @@ public class Transaction {
         }
         else{
             u.balance -= totalAmount;
+            //u.purchaseList.add(p);
             p.qty -= purchasedQty;
             Product temp=new Product(p.productID,p.productName,p.price,purchasedQty);
             u.purchaseList.add(temp);
