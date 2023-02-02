@@ -21,9 +21,6 @@ public class Product {
         System.out.println("Product Quantity: "+ qty);
     }
 
-    public void updateQuantity(Transaction t){
-
-    }
 
 }
 
@@ -40,6 +37,7 @@ class Catalog {
     public void getCatalog()
     {
         Formatter fmt = new Formatter();
+        System.out.println("Product Stock:\n");
         fmt.format("%s %15s %15s %15s\n", "Id", "Name", "Price", "Quantity");
         fmt.format("--------------------------------------------------------------\n");
         for(int i=0;i<productList.size();i++)

@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
 
-    static ArrayList<User> userList = new ArrayList<>();
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -11,6 +9,7 @@ public class Main {
         Catalog c = new Catalog();
         int ch = 0;
 
+        NewSession:
         do {
 
             System.out.println("1. Login \n2. Register \n3. Change Password\n4. Exit");
@@ -21,50 +20,51 @@ public class Main {
                     String userName = sc.next();
                     System.out.println("Enter Password: ");
                     String password = sc.next();
-                    User userObj = new User();
-                    if (userObj.loginUser(userList, userName, password))
+                    User currUser = new User();
+                    if (currUser.loginUser(user.userList, userName, password))
                     {
-                        System.out.println("Name:"+userObj.name);
-                        c.getCatalog();
-                        System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
-                        System.out.println("Enter your choice:");
-                        int choice=sc.nextInt();
-                        switch(choice)
+                        currUser = user.getUser(userName);
+                        int choice;
+                        do
                         {
-                            case 1:
+                            c.getCatalog();
+                            System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
+                            System.out.println("Enter your choice:");
+                            choice=sc.nextInt();
+                            switch(choice)
                             {
-                                System.out.println("Show Profile\n");
-                                for(int i=0;i<userList.size();i++)
+                                case 1:
                                 {
-                                    System.out.println("Id:" + userList.get(i).uId );
-                                    System.out.println("Name:" + userList.get(i).name );
-                                    System.out.println("Balance:" + userList.get(i).balance );
+                                    System.out.println("User Profile\n");//
+                                    System.out.println("Id: " + currUser.uId);
+                                    System.out.println("Name: " + currUser.name);
+                                    System.out.println("Balance: " + currUser.balance);
+                                    break;
                                 }
-                                break;
-                            }
-                            case 2:
-                            {
-                                System.out.println("Enter Product ID to purchase: ");
-                                int productId = sc.nextInt();
-                                Product purchasedProduct = c.getProduct(productId);
-                                System.out.println(purchasedProduct.productName);
-                                Transaction t = new Transaction();
-                                t.purchase(purchasedProduct, userObj, c.productList);
-                                purchasedProduct.updateQuantity(t);
-                                break;
-                            }
+                                case 2:
+                                {
+                                    System.out.println("Enter Product ID to purchase: ");
+                                    int productId = sc.nextInt();
+                                    Product purchasedProduct = c.getProduct(productId);
+                                    System.out.println("Selected Product: " + purchasedProduct.productName);
+                                    Transaction t = new Transaction();
+                                    t.purchase(purchasedProduct, currUser, c.productList, sc);
+                                    break;
+                                }
 
-                            case 3:
-                            {
-                                break;
-                            }
+                                case 3:
+                                {
+                                    continue NewSession;
+                                }
 
-                            default:
-                            {
-                                System.out.println("Invalid choice...Enter proper choice\n");
-                                break;
+                                default:
+                                {
+                                    System.out.println("Invalid choice...Enter valid choice!!\n");
+                                    break;
+                                }
                             }
-                        }
+                        }while(choice!=3);
+
                     }
                     else
                     {
@@ -74,16 +74,16 @@ public class Main {
                 }
                 case 2: {
                      User userObj = new User();
-                     userObj.register();
-                     userList.add(userObj);
+                     userObj.register(user.userList);
+                     user.userList.add(userObj);
                      break;
                 }
 
                 case 3: {
                         System.out.println("Enter Username to change Password ");
                         String userName = sc.next();
-                        User userObj = new User();
-                        userObj.changePassword(userList, userName);
+                        User currUser = user.getUser(userName);
+                        currUser.changePassword(sc);
                         break;
                 }
                 case 4: {
@@ -91,7 +91,7 @@ public class Main {
                         break;
                 }
                 default: {
-                        System.out.println("Invalid Choice");
+                        System.out.println("Invalid Choice...Enter valid choice!!");
                         break;
                 }
             }

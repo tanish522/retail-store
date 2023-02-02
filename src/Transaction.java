@@ -2,14 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Transaction {
-
     int totalAmount, pID, updatedBal;
-    public void purchase(Product p, User u, ArrayList<Product> productList) {
+    public void purchase(Product p, User u, ArrayList<Product> productList, Scanner sc) {
         System.out.println("Your Balance: " + u.balance);
-
-        Scanner sc = new Scanner(System.in);
-        Transaction t = new Transaction();
-        System.out.println("Enter required quantity : ");
+        System.out.println("Enter quantity : ");
         int purchasedQty = sc.nextInt();
         totalAmount = purchasedQty * p.price;
         if (u.balance < totalAmount) {
@@ -19,6 +15,15 @@ public class Transaction {
             u.balance -= totalAmount;
             //u.purchaseList.add(p);
             p.qty -= purchasedQty;
+            Product temp=new Product(p.productID,p.productName,p.price,purchasedQty);
+            u.purchaseList.add(temp);
+            for (int i=0;i<productList.size();i++)
+            {
+                if(productList.get(i).productID==p.productID)
+                {
+                    productList.get(i).qty=p.qty;
+                }
+            }
             System.out.println("Successful transaction");
         }
     }

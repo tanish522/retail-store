@@ -16,18 +16,32 @@ public class User {
         this.password=password;
         this.balance=bal;
     }
-    public void register(){
-        //users.contains(this.uId);
+    public User()
+    {
+
+    }
+
+    public void register(ArrayList<User> uList){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter UID: ");
-        this.uId = sc.nextInt();
-        System.out.println("Enter Name: ");
-        this.name = sc.next();
+        RegisterAgain:
+        while (true)
+        {
+            System.out.println("Enter UID: ");
+            this.uId = sc.nextInt();
+            System.out.println("Enter Name: ");
+            this.name = sc.next();
+            for (int i = 0; i < uList.size(); i++) {
+                if (this.uId == uList.get(i).uId || this.name.equals(uList.get(i).name)) {
+                    System.out.println("User already exists. Enter another user ID and user name ");
+                    continue RegisterAgain;
+                }
+            }
+            break;
+        }
         System.out.println("Enter Password: ");
         this.password = sc.next();
         System.out.println("Enter Balance: ");
         this.balance = sc.nextInt();
-        return;
     }
 
 
@@ -44,31 +58,33 @@ public class User {
         return false;
     }
 
-    public void changePassword(ArrayList<User> userList, String userName){
-        System.out.println("size "+userList.size());
-        for(int i=0;i<userList.size();i++){
-            User temp = userList.get(i);
-            if(temp.name.equals(userName)){
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Enter New Password: ");
-                temp.password = sc.next();
-                userList.set(i,temp);
-                System.out.println("Password changed successfully ");
-                return;
-            }
-        }
-        System.out.println("Username Does not exists ");
+    public void changePassword(Scanner sc){
+
+        System.out.println("Enter New Password: ");
+        this.password=sc.next();
+        System.out.println("Password changed successfully ");
     }
 }
 class UserData
 {
-    ArrayList<User> users = new ArrayList<>();
+    ArrayList<User> userList = new ArrayList<>();
 
     public UserData()
     {
-        users.add(new User(1,"neel","neel",25000));
-        users.add(new User(2,"pratish","pratish",20000));
-        users.add(new User(3,"jinal","jinal",3000));
-        users.add(new User(4,"tanish","tanish",200));
+        userList.add(new User(1,"neel","neel",25000));
+        userList.add(new User(2,"pratish","pratish",20000));
+        userList.add(new User(3,"jinal","jinal",3000));
+        userList.add(new User(4,"tanish","tanish",200));
+    }
+    public User getUser(String name)
+    {
+        for(int i=0;i<userList.size();i++)
+        {
+            if(userList.get(i).name.equals(name))
+            {
+                return userList.get(i);
+            }
+        }
+        return null;
     }
 }
