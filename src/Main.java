@@ -1,11 +1,10 @@
+import java.io.Console;
 import java.util.Formatter;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
-
         Scanner sc = new Scanner(System.in);
         UserData user=new UserData();
         Catalog c = new Catalog();
@@ -13,15 +12,14 @@ public class Main {
 
         NewSession:
         do {
-
-            System.out.println("1. Login \n2. Register \n3. Change Password\n4. Exit");
+            System.out.print("\n1. Login \n2. Register \n3. Change Password\n4. Exit");
+            System.out.print("\nEnter your choice: ");
             ch = sc.nextInt();
             switch (ch) {
                 case 1: {
-                    System.out.println("Enter UserName: ");
+                    System.out.print("\nEnter UserName: ");
                     String userName = sc.next();
-                    System.out.println("Enter Password: ");
-                    String password = sc.next();
+                    String password = hiddenPassword();
                     User currUser = new User();
                     if (currUser.loginUser(user.userList, userName, password))
                     {
@@ -31,8 +29,8 @@ public class Main {
                         {
                             //System.out.print("\u000C");//for clear screen
                             c.getCatalog();
-                            System.out.println("1.Show Profile\n2.Purchase\n3.Logout");
-                            System.out.println("Enter your choice:");
+                            System.out.print("\n1.Show Profile\n2.Purchase\n3.Logout");
+                            System.out.print("\nEnter your choice:");
                             choice=sc.nextInt();
                             switch(choice)
                             {
@@ -43,10 +41,10 @@ public class Main {
                                 }
                                 case 2:
                                 {
-                                    System.out.println("Enter Product ID to purchase: ");
+                                    System.out.print("\nEnter Product ID to purchase product: ");
                                     int productId = sc.nextInt();
                                     Product purchasedProduct = c.getProduct(productId);
-                                    System.out.println("Selected Product: " + purchasedProduct.productName);
+                                    System.out.print("\nSelected Product: " + purchasedProduct.productName);
                                     Transaction t = new Transaction();
                                     t.purchase(purchasedProduct, currUser, c.productList, sc);
                                     break;
@@ -59,7 +57,7 @@ public class Main {
 
                                 default:
                                 {
-                                    System.out.println("Invalid choice...Enter valid choice!!\n");
+                                    System.out.print("Invalid choice...Enter valid choice!!\n");
                                     break;
                                 }
                             }
@@ -80,18 +78,18 @@ public class Main {
                 }
 
                 case 3: {
-                        System.out.println("Enter Username to change Password ");
+                        System.out.print("\nEnter Username to change Password: ");
                         String userName = sc.next();
                         User currUser = user.getUser(userName);
                         currUser.changePassword(sc);
                         break;
                 }
                 case 4: {
-                        System.out.println("Thank You For Shopping With Us! ");
+                        System.out.print("\nThank You For Shopping With Us! ");
                         break;
                 }
                 default: {
-                        System.out.println("Invalid Choice...Enter valid choice!!");
+                        System.out.print("\nInvalid Choice...Enter valid choice!!");
                         break;
                 }
             }
@@ -100,23 +98,34 @@ public class Main {
     }
 
     private static void showProfile(User currUser) {
-        System.out.println("User Profile\n");//
-        System.out.println("Id: " + currUser.uId);
-        System.out.println("FullName: "+currUser.f_name);
-        System.out.println("UserName: " + currUser.u_name);
-        System.out.println("Balance: " + currUser.balance);
+        System.out.print("\nUser Profile");//
+        System.out.print("UserId: " + currUser.uId);
+        System.out.print("\nFullName: "+currUser.f_name);
+        System.out.print("\nUserName: " + currUser.u_name);
+        System.out.println("\nBalance: " + currUser.balance);
         Formatter fmt =new Formatter();
-        fmt.format("%s %15s %15s %15s %15s","Name","Product Id","Quantity","Price","Total Amount\n");
-        fmt.format("---------------------------------------------------------------------\n");
+        fmt.format("\n%10s %15s %15s %12s %15s","Product Id","Name","Quantity","Price","Total Amount");
+        fmt.format("\n-------------------------------------------------------------------------------\n");
         for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
 
-            fmt.format("%s", currUser.purchaseList.get(i).productName);
-            fmt.format("%15s", currUser.purchaseList.get(i).productID);
+
+            fmt.format("%10s", currUser.purchaseList.get(i).productID);
+            fmt.format("%15s", currUser.purchaseList.get(i).productName);
             fmt.format("%15s", currUser.purchaseList.get(i).qty);
-            fmt.format("%15s2", currUser.purchaseList.get(i).price);
+            fmt.format("%15s", currUser.purchaseList.get(i).price);
             fmt.format("%15s\n",currUser.purchaseList.get(i).qty*currUser.purchaseList.get(i).price);
         }
-        fmt.format("--------------------------------------------------------------\n");
-        System.out.println(fmt);
+        fmt.format("-------------------------------------------------------------------------------\n");
+        System.out.print(fmt);
+    }
+
+    public  static String hiddenPassword(){
+        Console c=System.console();
+        char[] passw = c.readPassword("Enter Password: ");
+        for(int i=0;i<passw.length;i++){
+            System.out.print("*");
+        }
+        String p = new String(passw);
+        return p;
     }
 }

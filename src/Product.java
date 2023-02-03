@@ -13,10 +13,10 @@ public class Product {
     }
     void display()
     {
-        System.out.println("Product ID: "+ productID);
-        System.out.println("Product Name: "+ productName);
-        System.out.println("Product Price: "+ price);
-        System.out.println("Product Quantity: "+ qty);
+        System.out.print("\nProduct ID: "+ productID);
+        System.out.print("\nProduct Name: "+ productName);
+        System.out.print("\nProduct Price: "+ price);
+        System.out.print("\nProduct Quantity: "+ qty);
     }
 
 
@@ -27,23 +27,23 @@ class Catalog {
     // make display fun of catalog and access using its object
 
     public Catalog(){
-        productList.add(new Product(1,"Book",200,40));
-        productList.add(new Product(2,"Bag",400,10));
-        productList.add(new Product(3,"Pen",25,10));
-        productList.add(new Product(4,"Bottle",25,20));
+        productList.add(new Product(1,"TV",2000,40));
+        productList.add(new Product(2,"Laptop",4000,10));
+        productList.add(new Product(3,"Phone",1500,10));
+        productList.add(new Product(4,"AC",3000,20));
     }
     public void getCatalog()
     {
         Formatter fmt = new Formatter();
-        System.out.println("Product Stock:\n");
+        fmt.format("\n---------------------Product Stock---------------------\n");
         fmt.format("%s %15s %15s %15s\n", "Id", "Name", "Price", "Quantity");
-        fmt.format("------------------------------------------------------\n");
+        fmt.format("-------------------------------------------------------\n");
         for(int i=0;i<productList.size();i++)
         {
             fmt.format("%s %15s", productList.get(i).productID,productList.get(i).productName );
             fmt.format("%15s %15s \n",productList.get(i).price, productList.get(i).qty);
         }
-        System.out.println(fmt);
+        System.out.print(fmt);
 
     }
     public void setProductList(Product product)

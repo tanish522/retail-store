@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,24 +31,29 @@ public class User {
         RegisterAgain:
         while (true)
         {
-            System.out.println("Enter UID: ");
+            System.out.print("\nEnter UserId: ");
             this.uId = sc.nextInt();
             sc.nextLine();
-            System.out.println("Enter FullName: ");
+            System.out.print("Enter FullName: ");
             this.f_name=sc.nextLine();
-            System.out.println("Enter UserName: ");
+            System.out.print("Enter UserName: ");
             this.u_name = sc.nextLine();
             for (int i = 0; i < uList.size(); i++) {
                 if (this.uId == uList.get(i).uId || this.u_name.equals(uList.get(i).u_name)) {
-                    System.out.println("User already exists. Enter another user ID and user name ");
+                    System.out.print("\nUser already exists. Enter another user ID and user name ");
                     continue RegisterAgain;
                 }
             }
             break;
         }
-        System.out.println("Create Password: ");
-        this.password = sc.next();
-        System.out.println("Enter Balance: ");
+        Console c=System.console();
+        char[] passw = c.readPassword("Enter Password: ");
+        for(int i=0;i<passw.length;i++){
+            System.out.print("*");
+        }
+        String p = new String(passw);
+        this.password = p;
+        System.out.print("\nEnter Balance: ");
         this.balance = sc.nextInt();
     }
 
@@ -57,19 +63,25 @@ public class User {
         for(int i=0;i<userList.size();i++){
             User temp = userList.get(i);
             if(temp.u_name.equals(userName) && temp.password.equals(password)){
-                System.out.println("Welcome "+userName);
+                System.out.println("\nWelcome "+userName);
                 return true;
             }
         }
-        System.out.println("Username Or Password incorrect");
+        System.out.print("\nUsername Or Password incorrect");
         return false;
     }
 
     public void changePassword(Scanner sc){
-
-        System.out.println("Enter New Password: ");
-        this.password=sc.next();
-        System.out.println("Password changed successfully ");
+        Console c=System.console();
+        char[] passw = c.readPassword("Enter Password: ");
+        for(int i=0;i<passw.length;i++){
+            System.out.print("*");
+        }
+        String p = new String(passw);
+        this.password = p;
+//        System.out.print("Enter New Password: ");
+//        this.password=sc.next();
+        System.out.print("\nPassword changed successfully\n ");
     }
 }
 class UserData
@@ -79,7 +91,7 @@ class UserData
     public UserData()
     {
         userList.add(new User(1,"Neel Shah","neel","neel123", 25000));
-        userList.add(new User(2,"Partish Soni","Pratish","p111",200000));
+        userList.add(new User(2,"Partish Soni","pratish","p111",200000));
         userList.add(new User(3,"Jinal Thakor","jinal","j111",3000));
         userList.add(new User(4,"Tanish Patel","tanish","t111",200));
     }
