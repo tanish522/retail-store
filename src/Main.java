@@ -11,6 +11,7 @@ public class Main {
 
         NewSession:
         do {
+
             System.out.println("1. Login \n2. Register \n3. Change Password\n4. Exit");
             ch = sc.nextInt();
             switch (ch) {
@@ -34,23 +35,7 @@ public class Main {
                             {
                                 case 1:
                                 {
-                                    System.out.println("User Profile\n");//
-                                    System.out.println("Id: " + currUser.uId);
-                                    System.out.println("Name: " + currUser.name);
-                                    System.out.println("Balance: " + currUser.balance);
-                                    Formatter fmt =new Formatter();
-                                    fmt.format("%s %15s %15s %15s","Name","Product Id","Quantity","Price\n");
-                                    fmt.format("--------------------------------------------------------------\n");
-                                    for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
-
-                                        fmt.format("%s",currUser.purchaseList.get(i).productName);
-                                        fmt.format("%15s",currUser.purchaseList.get(i).productID);
-                                        fmt.format("%15s",currUser.purchaseList.get(i).qty);
-                                        fmt.format("%15s\n",currUser.purchaseList.get(i).price);
-                                    }
-                                    fmt.format("--------------------------------------------------------------\n");
-                                    System.out.println(fmt);
-
+                                    showProfile(currUser);
                                     break;
                                 }
                                 case 2:
@@ -109,5 +94,24 @@ public class Main {
             }
         } while (ch != 4);
 
+    }
+
+    private static void showProfile(User currUser) {
+        System.out.println("User Profile\n");//
+        System.out.println("Id: " + currUser.uId);
+        System.out.println("Name: " + currUser.name);
+        System.out.println("Balance: " + currUser.balance);
+        Formatter fmt =new Formatter();
+        fmt.format("%s %15s %15s %15s","Name","Product Id","Quantity","Price\n");
+        fmt.format("--------------------------------------------------------------\n");
+        for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
+
+            fmt.format("%s", currUser.purchaseList.get(i).productName);
+            fmt.format("%15s", currUser.purchaseList.get(i).productID);
+            fmt.format("%15s", currUser.purchaseList.get(i).qty);
+            fmt.format("%15s\n", currUser.purchaseList.get(i).price);
+        }
+        fmt.format("--------------------------------------------------------------\n");
+        System.out.println(fmt);
     }
 }
