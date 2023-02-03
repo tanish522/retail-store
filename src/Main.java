@@ -1,8 +1,10 @@
 import java.util.Formatter;
 import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+
 
         Scanner sc = new Scanner(System.in);
         UserData user=new UserData();
@@ -26,8 +28,9 @@ public class Main {
                         int choice;
                         do
                         {
+                            //System.out.print("\u000C");//for clear screen
                             c.getCatalog();
-                            System.out.println("1. Show Profile\n2.Purchase\n3.Logout");
+                            System.out.println("1.Show Profile\n2.Purchase\n3.Logout");
                             System.out.println("Enter your choice:");
                             choice=sc.nextInt();
                             switch(choice)
@@ -36,19 +39,21 @@ public class Main {
                                 {
                                     System.out.println("User Profile\n");//
                                     System.out.println("Id: " + currUser.uId);
-                                    System.out.println("Name: " + currUser.name);
+                                    System.out.println("FullName: " + currUser.f_name);
+                                    System.out.println("UserName: "+currUser.u_name);
                                     System.out.println("Balance: " + currUser.balance);
                                     Formatter fmt =new Formatter();
-                                    fmt.format("%s %15s %15s %15s","Name","Product Id","Quantity","Price\n");
-                                    fmt.format("--------------------------------------------------------------\n");
+                                    fmt.format("%s %15s %15s %15s %15s","Name","Product Id","Quantity","Price","Total Amount\n");
+                                    fmt.format("---------------------------------------------------------------------\n");
                                     for(int i = currUser.purchaseList.size()-1; i >= 0; i--){
 
                                         fmt.format("%s",currUser.purchaseList.get(i).productName);
                                         fmt.format("%15s",currUser.purchaseList.get(i).productID);
                                         fmt.format("%15s",currUser.purchaseList.get(i).qty);
-                                        fmt.format("%15s\n",currUser.purchaseList.get(i).price);
+                                        fmt.format("%15s",currUser.purchaseList.get(i).price);
+                                        fmt.format("%15s\n",currUser.purchaseList.get(i).qty*currUser.purchaseList.get(i).price);
                                     }
-                                    fmt.format("--------------------------------------------------------------\n");
+                                    fmt.format("---------------------------------------------------------------------\n");
                                     System.out.println(fmt);
 
                                     break;

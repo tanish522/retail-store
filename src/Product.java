@@ -37,7 +37,7 @@ class Catalog {
         Formatter fmt = new Formatter();
         System.out.println("Product Stock:\n");
         fmt.format("%s %15s %15s %15s\n", "Id", "Name", "Price", "Quantity");
-        fmt.format("--------------------------------------------------------------\n");
+        fmt.format("------------------------------------------------------\n");
         for(int i=0;i<productList.size();i++)
         {
             fmt.format("%s %15s", productList.get(i).productID,productList.get(i).productName );
