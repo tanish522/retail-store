@@ -35,7 +35,7 @@ public class User {
             sc.nextLine();
             System.out.println("Enter FullName: ");
             this.f_name=sc.nextLine();
-            System.out.println("Enter Name: ");
+            System.out.println("Enter UserName: ");
             this.u_name = sc.nextLine();
             for (int i = 0; i < uList.size(); i++) {
                 if (this.uId == uList.get(i).uId || this.u_name.equals(uList.get(i).u_name)) {
