@@ -12,7 +12,6 @@ public class Transaction {
             if(purchasedQty > p.qty)
                 System.out.println("Quantity not available. Enter correct quantity. ");
         }while (purchasedQty > p.qty);
-
         totalAmount = purchasedQty * p.price;
         if (u.balance < totalAmount) {
             System.out.println("Insufficient balance");
