@@ -90,10 +90,10 @@ class UserData
 
     public UserData()
     {
-        userList.add(new User(1,"Neel Shah","neel","neel123", 25000));
-        userList.add(new User(2,"Partish Soni","pratish","p111",200000));
-        userList.add(new User(3,"Jinal Thakor","jinal","j111",3000));
-        userList.add(new User(4,"Tanish Patel","tanish","t111",200));
+        userList.add(new User(1,"Neel Shah","neel","neel123", 500000));
+        userList.add(new User(2,"Partish Soni","pratish","p111",1000000));
+        userList.add(new User(3,"Jinal Thakor","jinal","j111",200000));
+        userList.add(new User(4,"Tanish Patel","tanish","t111",100));
     }
     public User getUser(String name)
     {

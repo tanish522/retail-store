@@ -6,16 +6,19 @@ public class Transaction {
     public void purchase(Product p, User u, ArrayList<Product> productList, Scanner sc) {
         int purchasedQty;
         System.out.print("\nYour Balance: " + u.balance);
-        do {
+        while(true) {
             System.out.print("\nEnter quantity : ");
             purchasedQty = sc.nextInt();
-//            if(p.qty<=0){
-//                System.out.println("Enter valid qauntity ");
-//            }
-            if(purchasedQty > p.qty) {
+            if (purchasedQty <= 0) {
+                System.out.println("Enter valid positive quantity. ");
+            }
+            else if (purchasedQty > p.qty) {
                 System.out.print("\nQuantity not available. Enter lesser quantity. ");
             }
-        }while (purchasedQty > p.qty);
+            else{
+                break;
+            }
+        }
         totalAmount = purchasedQty * p.price;
         if (u.balance < totalAmount) {
             System.out.print("\nInsufficient balance");

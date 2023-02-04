@@ -18,8 +18,6 @@ public class Product {
         System.out.print("\nProduct Price: "+ price);
         System.out.print("\nProduct Quantity: "+ qty);
     }
-
-
 }
 
 class Catalog {
@@ -27,10 +25,10 @@ class Catalog {
     // make display fun of catalog and access using its object
 
     public Catalog(){
-        productList.add(new Product(1,"TV",2000,40));
-        productList.add(new Product(2,"Laptop",4000,10));
-        productList.add(new Product(3,"Phone",1500,10));
-        productList.add(new Product(4,"AC",3000,20));
+        productList.add(new Product(1,"TV",60000,40));
+        productList.add(new Product(2,"Laptop",100000,10));
+        productList.add(new Product(3,"Phone",20000,50));
+        productList.add(new Product(4,"AC",40000,20));
     }
     public void getCatalog()
     {
