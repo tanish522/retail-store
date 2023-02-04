@@ -41,8 +41,17 @@ public class Main {
                                 }
                                 case 2:
                                 {
-                                    System.out.print("\nEnter Product ID to purchase product: ");
-                                    int productId = sc.nextInt();
+                                    int productId;
+                                    while(true) {
+                                        System.out.print("\nEnter Product ID to purchase product: ");
+                                        productId = sc.nextInt();
+                                        if(productId>4){
+                                            System.out.print("Please Enter valid productId \n");
+                                        }
+                                        else{
+                                            break;
+                                        }
+                                    }
                                     Product purchasedProduct = c.getProduct(productId);
                                     System.out.print("\nSelected Product: " + purchasedProduct.productName);
                                     Transaction t = new Transaction();
