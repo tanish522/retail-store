@@ -27,7 +27,7 @@ public class Main {
                         int choice;
                         do
                         {
-                            //System.out.print("\u000C");//for clear screen
+                            System.out.print("\u000C");//for clear screen
                             c.getCatalog();
                             System.out.print("\n1.Show Profile\n2.Purchase\n3.Logout");
                             System.out.print("\nEnter your choice:");

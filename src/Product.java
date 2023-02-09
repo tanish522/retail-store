@@ -33,7 +33,7 @@ class Catalog {
     public void getCatalog()
     {
         Formatter fmt = new Formatter();
-        fmt.format("\n---------------------Product Stock---------------------\n");
+        fmt.format("---------------------Product Stock---------------------\n");
         fmt.format("%s %15s %15s %15s\n", "Id", "Name", "Price", "Quantity");
         fmt.format("-------------------------------------------------------\n");
         for(int i=0;i<productList.size();i++)

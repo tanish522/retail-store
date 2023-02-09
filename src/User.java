@@ -29,18 +29,27 @@ public class User {
     public void register(ArrayList<User> uList){
         Scanner sc = new Scanner(System.in);
         RegisterAgain:
-        while (true)
+        while(true)
         {
             System.out.print("\nEnter UserId: ");
             this.uId = sc.nextInt();
             sc.nextLine();
+            if(this.uId<4) {
+                for (int i = 0; i < uList.size(); i++) {
+                    if (this.uId == uList.get(i).uId) {
+                        System.out.print("\nUser already exists. Enter another user ID ");
+                        continue RegisterAgain;
+                    }
+                }
+                break;
+            }
             System.out.print("Enter FullName: ");
             this.f_name=sc.nextLine();
             System.out.print("Enter UserName: ");
             this.u_name = sc.nextLine();
             for (int i = 0; i < uList.size(); i++) {
-                if (this.uId == uList.get(i).uId || this.u_name.equals(uList.get(i).u_name)) {
-                    System.out.print("\nUser already exists. Enter another user ID and user name ");
+                if (this.u_name.equals(uList.get(i).u_name)) {
+                    System.out.print("\nUsername already exists. Enter another Username ");
                     continue RegisterAgain;
                 }
             }
@@ -63,7 +72,7 @@ public class User {
         for(int i=0;i<userList.size();i++){
             User temp = userList.get(i);
             if(temp.u_name.equals(userName) && temp.password.equals(password)){
-                System.out.println("\nWelcome "+userName);
+                System.out.print("\nWelcome "+userName);
                 return true;
             }
         }
@@ -79,15 +88,12 @@ public class User {
         }
         String p = new String(passw);
         this.password = p;
-//        System.out.print("Enter New Password: ");
-//        this.password=sc.next();
         System.out.print("\nPassword changed successfully\n ");
     }
 }
 class UserData
 {
     ArrayList<User> userList = new ArrayList<>();
-
     public UserData()
     {
         userList.add(new User(1,"Neel Shah","neel","neel123", 500000));
